@@ -1,16 +1,51 @@
 body {
     font-family: "Segoe UI", sans-serif;
-    background-color: white;
+    background: radial-gradient(circle at center, #a5c8ff 0%, #5ba4f7 50%, #1E88F6 100%);
     text-align: center;
-    margin: 0;
     padding: 20px;
 }
 
 h1 {
-    color: black;
-    border: 2px;
-    border-bottom: 1px solid rgb(238, 238, 238);
-    padding-bottom: 10px;
+    background: linear-gradient(270deg, #003268,#0050a5, #ffffff, #0050a5, #003268);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textFlow 10s ease-in-out infinite;
+    width: 50%;
+    margin: 20px auto;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(270deg, #007bff, #ffffff, #007bff);
+    background-size: 200% 100%;
+    animation: gradientFlow 10s ease-in-out infinite;
+    border-radius: 2px;
+}
+
+@keyframes gradientFlow{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+@keyframes textFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .stats {
@@ -21,27 +56,66 @@ h1 {
 }
 
 .stat-box {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(155, 155, 155, 0.8);
-    padding: 15px 30px;
+    position: relative;
     font-weight: 600;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2),  rgba(145, 123, 255, 0.6), rgba(255, 255, 255, 0.2));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0px 15px rgba(150, 130, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    border-radius: 12px;
+    padding: 15px 40px;
+    animation: float 4s ease-in-out infinite;
+    transform: all 0.3s ease;
+}
+.stat-box:hover{
+    box-shadow: 0 0 25px rgba(173, 216, 255, 0.7);
 }
 
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
 .mathIcon {
-    display: block;
-    font-weight: 700;
-    font-size: 2.5rem;
-    margin-top: 30px;
-    align-items: center;
-    justify-content: center;
-    color: black;
+  display: block;
+  font-weight: 900;
+  font-size: 4rem;
+  margin-top: 30px;
+  text-align: center;
+  background: linear-gradient(270deg, #0a55a12c, #ffffff, #0a55a12c);
+  background-size: 200% 100%;
+  animation: shineFlow 4s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 
+  0 0 6px rgba(0, 123, 255, 0.5),
+  0 0 5px rgba(0, 123, 255, 0.05),
+  0 0 10px rgba(0, 123, 255, 0);
+}
+@keyframes shineFlow{
+    0% {
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
 }
 
 .stat-box span {
     display: block;
     font-size: 1.2rem;
-    color: rgb(0, 119, 182);
+    color: white;
     margin-top: 5px;
 }
 
@@ -82,53 +156,56 @@ h1 {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin-bottom: 50px;
 }
 
-#resetButton {
-    background-color: rgb(0, 119, 182);
+.button {
+    background: linear-gradient(135deg, rgba(173, 216, 255, 0.25), rgba(0, 123,255,0.3));
     color: white;
     border: none;
     padding: 10px 25px;
     border-radius: 10px;
     cursor: pointer;
     font-weight: 600;
+    font-size: 16px;
     margin-top: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.15);
+    transition: all 0.3s ease;
 }
 
-#resetButton:hover {
-    background-color: rgb(0, 73, 112);
-}
-
-#pauseButton {
-    background-color: rgb(0, 119, 182);
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 10px;
-
-}
-
-#pauseButton:hover {
-    background-color: rgb(0, 73, 112);
-
+.button:hover {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.6), rgba(173, 216, 255, 0.4));
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    transform: translateY(-5px);
 }
 
 #logContainer {
-    background-color: white;
-    width: 500px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2),  rgba(145, 123, 255, 0.6), rgba(255, 255, 255, 0.2));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0px 15px rgba(150, 130, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 70%;
     margin: 20px auto;
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(155, 155, 155, 0.8);
+    box-shadow: 2px 2px 6px rgba(255, 255, 255, 0.8);
     padding: 10px 20px;
     text-align: left;
 }
 
 #logContainer h2 {
+    background: linear-gradient(270deg, #003268,#0050a5, #ffffff, #0050a5, #003268);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* bu kısım h1 etiketi ile aynı "textFlow"u kullanıyor */
+    animation: textFlow 13s ease-in-out infinite; 
     border-bottom: 1px solid rgb(238, 238, 238);
-    padding-bottom: 5px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 2rem;
 }
 
 #logList {
@@ -139,7 +216,7 @@ h1 {
 
 #logList li {
     padding: 6px 0;
-    border-bottom: 1px solid rgb(238, 238, 238);
+    border-bottom: 1px solid rgb(221, 220, 220);
     font-size: 14px;
 
 }

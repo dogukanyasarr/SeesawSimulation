@@ -18,25 +18,25 @@
     <div class="stats">
         <div class="stat-box">
             <p>Sıradaki Ağırlık</p>
-            <span id="nextWeight">0 Kg</span>
+            <span id="nextWeight"></span>
         </div>
         <div class="stat-box">
             <p>Sol Ağırlık</p>
-            <span id="leftWeight">0.0 Kg</span>
+            <span id="leftWeight"></span>
         </div>
         <p class="mathIcon">+</p>
         <div class="stat-box">
             <p>Sağ Ağırlık</p>
-            <span id="rightWeight">0.0 Kg</span>
+            <span id="rightWeight"></span>
         </div>
         <p class="mathIcon">=</p>
         <div class="stat-box">
             <p>Toplam Ağırlık</p>
-            <span id="totalWeight">0 Kg</span>
+            <span id="totalWeight"></span>
         </div>
         <div class="stat-box">
             <p>Eğim Açısı</p>
-            <span id="angleDisplay">0°</span>
+            <span id="angleDisplay">°</span>
         </div>
 
     </div>
@@ -48,8 +48,8 @@
 
     <!-- Simülasyonu durdurma ve temizleme işlemlerini yapacak butonlar -->
     <div id="buttonContainer">
-        <button id="resetButton">Ağırlıkları Temizle</button>
-        <button id="pauseButton">Durdur</button>
+        <button id="resetButton" class="button">Ağırlıkları Temizle</button>
+        <button id="pauseButton" class="button">Durdur</button>
     </div>
 
     <!-- Simülasyona gönderilen ağırlıkların kaydını tutan tablo yapısı -->
@@ -60,6 +60,8 @@
             <li>Lorem ipsum dolor sit amet.</li>
         </ul>
     </div>
+
+    <script src="./script.js"></script>
 </body>
 
 </html>
