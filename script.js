@@ -269,7 +269,7 @@ function addLog(obj) {
 
   li.appendChild(textSpan);
   li.appendChild(deleteBtn);
-  logList.appendChild(li);
+  logList.prepend(li);
 }
 
 
