@@ -3,7 +3,10 @@ const container = document.getElementById("seesawContainer");
 
 
 let objects = [];
-let nextObjectId = 0;
+let currentAngle = 0;
+let angularVelocity = 0;
+const MAX_ANGLE_DEG = 30;
+const DAMPING= 0.5;
 
 // Sayıların random renkle düşmesini sağlayan kısım.
 
@@ -24,6 +27,7 @@ function addWeightHandler(e) {
   const startY = -50;
   const endY = plankRect.top - containerRect.top - 5; 
 
+  // ağırlık toplarını random renklerle oluşturduğum kısım.
   const el = document.createElement("div");
   el.className = "weight-object";
   el.textContent = `${weight}`;
@@ -47,11 +51,45 @@ function addWeightHandler(e) {
     el.style.top = `${endY - size / 2}px`;
   }, 50);
 
-  objects.push({ id: nextObjectId++, x: clickX, weight, color });
+  objects.push({ x: clickX, weight, el });
   console.log(`yeni ağırlık eklendi ${weight}kg (x: ${clickX}px)`);
 }
 
+function calculateTorque(){
+  let leftTorque = 0;
+  let rightTorque = 0;
+
+  objects.forEach((obj) => {
+    const d = obj.x;
+    const force = obj.weight;
+
+    if(d < 0) leftTorque += Math.abs(d)*force;
+    else rightTorque += d * force;
+  });
+
+  return rightTorque - leftTorque;
+}
+
+function updatePhysics(){
+  const torque = calculateTorque();
+
+  const angularAcceleration = torque / 30000;
+  angularVelocity += angularAcceleration;
+  angularVelocity *= DAMPING;
+
+  currentAngle += angularVelocity;
+  currentAngle = Math.max(-MAX_ANGLE_DEG, Math.min(MAX_ANGLE_DEG, currentAngle));
+
+  plank.style.transform = `translateX(-50%) rotate(${currentAngle}deg)`;
+
+  requestAnimationFrame(updatePhysics);
+}
+
+
+
 plank.addEventListener("click", addWeightHandler);
+
+requestAnimationFrame(updatePhysics);
 
 const style = document.createElement("style");
 style.textContent = `
