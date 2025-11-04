@@ -1,6 +1,6 @@
 # Doğukan YAŞAR "Seesaw Simulation Project"
 
-## Proje Tanıtım Video: 
+## Proje Tanıtım Video: https://www.youtube.com/watch?v=Ibi3w4EP4rg
 
 ## Proje Yapısı
 
